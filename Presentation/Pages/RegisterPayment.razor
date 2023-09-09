@@ -10,7 +10,7 @@
 <PageTitle>Registro Abono</PageTitle>
 
 
-<EditForm Model="@model" OnValidSubmit="@AddUser">
+<EditForm Model="@model" OnValidSubmit="@AddDebit">
     <div class="mb-3">
         <label class="form-label">Numero de documento</label>
         <input @bind-value="@model.DocumentNumber" type="number" class="form-control">
@@ -66,8 +66,10 @@
     }
 
 
-    private async Task AddUser()
+    private async Task AddDebit()
     {
+        if (model.Value == default(int))
+            return;
         DebitResponseModel debit = await PaymentService.AddDebit(model);
         if (debit.IsOK)
         {
