@@ -1,0 +1,60 @@
+﻿@page "/registeruser/{Value}"
+
+
+@using Presentation.Services.Interfaces
+@using IPUC.AA.Back.Models
+@inject IUserService UserService
+@inject NavigationManager NavManager
+
+<PageTitle>Registro Usuario</PageTitle>
+
+
+<EditForm Model="@model" OnValidSubmit="@AddUser">
+    <div class="mb-3">
+        <label class="form-label">Numero de documento</label>
+        <input @bind-value="@model.DocumentNumber" type="number" class="form-control">
+        <div id="emailHelp" class="form-text">Numero de cedula de quien realiza el abono.</div>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Nombre Completo</label>
+        <input @bind-value="@model.Name" type="text" class="form-control" >
+        <div id="emailHelp" class="form-text">Nombre de quien realiza el abono.</div>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Numero de Celular</label>
+        <input @bind-value="@model.Phone" type="text" class="form-control">
+        <div id="emailHelp" class="form-text">Nombre de quien realiza el abono.</div>
+    </div>
+    <button type="submit" class="btn btn-primary">Crear</button>
+    <button class="btn btn-light" @onclick="Cancel">Cancelar</button>
+</EditForm>
+
+
+@code
+{
+    [Parameter]
+    public string Value { get; set; }
+
+    private AddUserModel model = new AddUserModel();
+
+    protected override async Task OnInitializedAsync()
+    {
+        model.DocumentNumber = int.Parse(Value);
+    }
+
+    
+    private async Task AddUser()
+    {
+        AddUserResponseModel addUser = await UserService.AddUser(model);
+        if (addUser.IsCreated)
+        {
+            NavManager.NavigateTo($"/registerpayment/{model.DocumentNumber}");
+        }
+    }
+
+    public void Cancel()
+    {
+        NavManager.NavigateTo("/queries");
+    }
+}
