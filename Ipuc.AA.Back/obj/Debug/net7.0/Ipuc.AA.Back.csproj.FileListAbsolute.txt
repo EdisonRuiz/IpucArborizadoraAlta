@@ -1,0 +1,14 @@
+C:\Users\epelr\source\repos\IpucArborizadoraAlta\Ipuc.AA.Back\bin\Debug\net7.0\IPUC.AA.Back.deps.json
+C:\Users\epelr\source\repos\IpucArborizadoraAlta\Ipuc.AA.Back\bin\Debug\net7.0\IPUC.AA.Back.runtimeconfig.json
+C:\Users\epelr\source\repos\IpucArborizadoraAlta\Ipuc.AA.Back\bin\Debug\net7.0\IPUC.AA.Back.dll
+C:\Users\epelr\source\repos\IpucArborizadoraAlta\Ipuc.AA.Back\bin\Debug\net7.0\IPUC.AA.Back.pdb
+C:\Users\epelr\source\repos\IpucArborizadoraAlta\Ipuc.AA.Back\obj\Debug\net7.0\IPUC.AA.Back.csproj.AssemblyReference.cache
+C:\Users\epelr\source\repos\IpucArborizadoraAlta\Ipuc.AA.Back\obj\Debug\net7.0\IPUC.AA.Back.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\epelr\source\repos\IpucArborizadoraAlta\Ipuc.AA.Back\obj\Debug\net7.0\IPUC.AA.Back.AssemblyInfoInputs.cache
+C:\Users\epelr\source\repos\IpucArborizadoraAlta\Ipuc.AA.Back\obj\Debug\net7.0\IPUC.AA.Back.AssemblyInfo.cs
+C:\Users\epelr\source\repos\IpucArborizadoraAlta\Ipuc.AA.Back\obj\Debug\net7.0\IPUC.AA.Back.csproj.CoreCompileInputs.cache
+C:\Users\epelr\source\repos\IpucArborizadoraAlta\Ipuc.AA.Back\obj\Debug\net7.0\IPUC.AA.Back.dll
+C:\Users\epelr\source\repos\IpucArborizadoraAlta\Ipuc.AA.Back\obj\Debug\net7.0\refint\IPUC.AA.Back.dll
+C:\Users\epelr\source\repos\IpucArborizadoraAlta\Ipuc.AA.Back\obj\Debug\net7.0\IPUC.AA.Back.pdb
+C:\Users\epelr\source\repos\IpucArborizadoraAlta\Ipuc.AA.Back\obj\Debug\net7.0\IPUC.AA.Back.genruntimeconfig.cache
+C:\Users\epelr\source\repos\IpucArborizadoraAlta\Ipuc.AA.Back\obj\Debug\net7.0\ref\IPUC.AA.Back.dll

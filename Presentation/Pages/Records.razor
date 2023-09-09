@@ -1,0 +1,23 @@
+﻿@page "/records";
+@inject NavigationManager NavManager
+
+<PageTitle>Nuevo Registro</PageTitle>
+
+<div class="d-grid gap-2">
+    <button class="btn btn-primary" type="button" onclick="@GoUser">Agregar Usuario</button>
+    <button class="btn btn-info" type="button" onclick="@GoPayment">Agregar Abono</button>
+</div>
+
+
+@code
+{
+    private async Task GoUser()
+    {
+        NavManager.NavigateTo("/registeruser/0");
+    }
+
+    private async Task GoPayment()
+    {
+        NavManager.NavigateTo("/registerpayment/0");
+    }
+}

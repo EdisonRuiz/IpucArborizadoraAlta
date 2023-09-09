@@ -1,0 +1,79 @@
+﻿@page "/reports";
+
+@using IPUC.AA.Back.Models
+@using Presentation.Services.Interfaces
+@using System.Globalization;
+@inject IPaymentService PaymentService
+
+<PageTitle>Reportes</PageTitle>
+
+<h1>Abonos realizados</h1>
+
+<div class="row g-3 align-items-center">
+    <div class="col-auto">
+        <label for="inputPassword6" class="col-form-label">Numero de documento</label>
+    </div>
+    <div class="col-auto">
+        <input @bind="documentNumber" type="number" id="inputPassword6" class="form-control" aria-describedby="passwordHelpInline">
+    </div>
+    <div class="col-auto">
+        <button onclick="@GetDebits" class="btn btn-outline-primary" type="submit">Buscar</button>
+    </div>
+</div>
+
+@if (payments == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <br />
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Numero de documento</th>
+                <th># de abonos</th>
+                <th>Total</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var payments in payments)
+            {
+                <tr>
+                    <td>@payments.Name</td>
+                    <td>@payments.DocumentNumber</td>
+                    <td>@payments.TotalDebit</td>
+                    <td>@payments.Value.ToString("C", CultureInfo.CurrentCulture)</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    private List<PaymentModel>? payments;
+    private int documentNumber = default(int);
+
+    protected override async Task OnInitializedAsync()
+    {
+        payments = await PaymentService.GetAllTotalDebits();
+    }
+
+    private async Task GetDebits()
+    {
+        if (documentNumber == default(int))
+        {
+            if (payments != null && payments.Count() == 1)
+                payments = await PaymentService.GetAllTotalDebits();
+            return;
+        }
+
+        PaymentModel response = await PaymentService.GetTotalDebits(documentNumber);
+        if (response.DocumentNumber == default(int))
+            return;
+        List<PaymentModel> paymentModels = new List<PaymentModel>();
+        paymentModels.Add(response);
+        payments = paymentModels;
+    }
+}

@@ -1,0 +1,59 @@
+﻿@page "/queries";
+
+@using Presentation.Services.Interfaces
+@using IPUC.AA.Back.Models
+@inject IUserService UserService
+@inject NavigationManager NavManager
+
+<PageTitle>Consulta Pagos</PageTitle>
+
+<form OnValidSubmit="@ValidateUser(true)">
+    <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Numero de documento</label>
+        <input @bind="@documentNumber" type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+        <div id="emailHelp" class="form-text">Numero de cedula de quien realiza el abono.</div>
+    </div>
+    <button type="submit" class="btn btn-primary">Consultar</button>
+</form>
+
+@* @if (isGetUser)
+{
+   
+}
+else
+{
+<div class="row">
+    <label for="colFormLabelLg" class="col-sm-2 col-form-label col-form-label-lg">N Documento</label>
+    <div class="col-sm-10">
+        <input type="text" class="form-control form-control-lg" id="inputnDocumento" placeholder="sin info." disabled="disabled" value="@model.Message">
+    </div>
+    <br />
+    <label for="colFormLabelLg" class="col-sm-2 col-form-label col-form-label-lg">Nombre</label>
+    <div class="col-sm-10">
+        <input type="text" class="form-control form-control-lg" id="inputNombre" placeholder="sin info." disabled="disabled">
+    </div>
+</div>
+} *@
+
+@code
+{
+    int documentNumber = 0;
+    AddUserResponseModel model = new AddUserResponseModel();
+
+    private async Task ValidateUser(bool isOK = false)
+    {
+        //bool isValidate = false;
+        if (documentNumber != default(int))
+        {
+            model = await UserService.ValidateUser(documentNumber);
+            if (!model.IsCreated)
+            {
+                NavManager.NavigateTo($"/registeruser/{documentNumber}");
+            }
+            else
+            {
+                NavManager.NavigateTo($"/registerpayment/{documentNumber}");
+            }
+        }
+    }
+}
