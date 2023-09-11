@@ -4,6 +4,7 @@
     <DebuggerFlavor>ProjectDebugger</DebuggerFlavor>
   </PropertyGroup>
   <PropertyGroup>
-    <ActiveDebugProfile>https</ActiveDebugProfile>
+    <ActiveDebugProfile>IIS Express</ActiveDebugProfile>
+    <NameOfLastUsedPublishProfile>C:\Users\epelr\source\repos\IpucArborizadoraAlta\Presentation\Properties\PublishProfiles\Presentation20230910094408.pubxml</NameOfLastUsedPublishProfile>
   </PropertyGroup>
 </Project>

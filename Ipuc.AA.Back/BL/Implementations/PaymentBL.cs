@@ -72,7 +72,7 @@ namespace IPUC.AA.Back.BL.Implementations
 
             return new PaymentModel()
             {
-                DocumentNumber = entity.UserId,
+                CampSpace = entity.User.CampSpace,
                 Name = entity.User.Name,
                 TotalDebit = 1,
                 Value = entity.Value
@@ -87,7 +87,7 @@ namespace IPUC.AA.Back.BL.Implementations
 
             return new PaymentModel()
             {
-                DocumentNumber = entities.FirstOrDefault().UserId,
+                CampSpace = entities.FirstOrDefault().User.CampSpace,
                 Name = entities.FirstOrDefault().User.Name,
                 TotalDebit = entities.Count,
                 Value = entities.Sum(x => x.Value)
@@ -100,7 +100,7 @@ namespace IPUC.AA.Back.BL.Implementations
             List<PaymentModel> response = new List<PaymentModel>();
             response = entities.GroupBy(x => x.UserId).Select(item => new PaymentModel()
             {
-                DocumentNumber = item.First().UserId,
+                CampSpace = item.First().User.CampSpace,
                 Name = item.First().User.Name,
                 TotalDebit = item.Count(),
                 Value = item.Sum(x => x.Value)

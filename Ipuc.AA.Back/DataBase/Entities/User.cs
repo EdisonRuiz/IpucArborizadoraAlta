@@ -15,6 +15,8 @@ public partial class User
 
     public Int64 Phone { get; set; }
 
+    public byte CampSpace { get; set; } 
+
     [InverseProperty("User")]
     public virtual ICollection<Payment> Payments { get; set; } = new List<Payment>();
 }
