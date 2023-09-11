@@ -24,7 +24,12 @@
     <div class="mb-3">
         <label class="form-label">Numero de Celular</label>
         <input @bind-value="@model.Phone" type="text" class="form-control">
-        <div id="emailHelp" class="form-text">Nombre de quien realiza el abono.</div>
+        <div id="emailHelp" class="form-text">Numero de contacto.</div>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Cantidad de Cupos</label>
+        <input @bind-value="@model.CampSpace" type="number" class="form-control">
+        <div id="emailHelp" class="form-text">Cupos que aparta.</div>
     </div>
     <button type="submit" class="btn btn-primary">Crear</button>
     <button class="btn btn-light" @onclick="Cancel">Cancelar</button>

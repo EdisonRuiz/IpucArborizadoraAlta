@@ -32,9 +32,9 @@ else
         <thead>
             <tr>
                 <th>Nombre</th>
-                <th>Numero de documento</th>
+                <th># de cupos</th>
                 <th># de abonos</th>
-                <th>Total</th>
+                <th>Total Abonado</th>
             </tr>
         </thead>
         <tbody>
@@ -42,7 +42,7 @@ else
             {
                 <tr>
                     <td>@payments.Name</td>
-                    <td>@payments.DocumentNumber</td>
+                    <td>@payments.CampSpace</td>
                     <td>@payments.TotalDebit</td>
                     <td>@payments.Value.ToString("C", CultureInfo.CurrentCulture)</td>
                 </tr>
@@ -70,7 +70,7 @@ else
         }
 
         PaymentModel response = await PaymentService.GetTotalDebits(documentNumber);
-        if (response.DocumentNumber == default(int))
+        if (response.CampSpace == default(int))
             return;
         List<PaymentModel> paymentModels = new List<PaymentModel>();
         paymentModels.Add(response);

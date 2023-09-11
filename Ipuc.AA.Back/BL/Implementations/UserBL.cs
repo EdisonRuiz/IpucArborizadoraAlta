@@ -33,7 +33,8 @@ namespace IPUC.AA.Back.BL.Implementations
             {
                 Id = model.DocumentNumber,
                 Name = model.Name,
-                Phone = model.Phone,    
+                Phone = model.Phone,  
+                CampSpace = model.CampSpace,
             });
 
             return new AddUserResponseModel()
