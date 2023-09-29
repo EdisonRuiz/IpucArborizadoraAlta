@@ -1,0 +1,69 @@
+is_global = true
+build_property.TargetFramework = net7.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = Presentation
+build_property.RootNamespace = Presentation
+build_property.ProjectDir = C:\Users\epelr\source\repos\IpucArborizadoraAlta\Presentation\
+build_property.RazorLangVersion = 7.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = C:\Users\epelr\source\repos\IpucArborizadoraAlta\Presentation
+build_property._RazorSourceGeneratorDebug = 
+
+[C:/Users/epelr/source/repos/IpucArborizadoraAlta/Presentation/App.razor]
+build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/epelr/source/repos/IpucArborizadoraAlta/Presentation/Pages/Index.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXgucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/epelr/source/repos/IpucArborizadoraAlta/Presentation/Pages/Queries.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUXVlcmllcy5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/epelr/source/repos/IpucArborizadoraAlta/Presentation/Pages/Records.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUmVjb3Jkcy5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/epelr/source/repos/IpucArborizadoraAlta/Presentation/Pages/RegisterPayment.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUmVnaXN0ZXJQYXltZW50LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/epelr/source/repos/IpucArborizadoraAlta/Presentation/Pages/RegisterUser.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUmVnaXN0ZXJVc2VyLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/epelr/source/repos/IpucArborizadoraAlta/Presentation/Pages/Reports.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUmVwb3J0cy5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/epelr/source/repos/IpucArborizadoraAlta/Presentation/Shared/SurveyPrompt.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXFN1cnZleVByb21wdC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/epelr/source/repos/IpucArborizadoraAlta/Presentation/_Imports.razor]
+build_metadata.AdditionalFiles.TargetPath = X0ltcG9ydHMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/epelr/source/repos/IpucArborizadoraAlta/Presentation/Shared/MainLayout.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE1haW5MYXlvdXQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-2j87krje1o
+
+[C:/Users/epelr/source/repos/IpucArborizadoraAlta/Presentation/Shared/NavMenu.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE5hdk1lbnUucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-l7pvs56z1q
+
+[C:/Users/epelr/source/repos/IpucArborizadoraAlta/Presentation/Pages/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXJyb3IuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/epelr/source/repos/IpucArborizadoraAlta/Presentation/Pages/_Host.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX0hvc3QuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 

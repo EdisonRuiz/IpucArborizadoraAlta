@@ -31,22 +31,28 @@ else
     <table class="table">
         <thead>
             <tr>
-                <th>Nombre</th>
-                <th># de cupos</th>
-                <th># de abonos</th>
-                <th>Total Abonado</th>
+                <th class="col-lg-2">Nombre</th>
+                <th class="col-lg-2"># de cupos</th>
+                <th class="col-lg-2"># de abonos</th>
+                <th class="col-lg-2">Total Abonado</th>
             </tr>
         </thead>
         <tbody>
             @foreach (var payments in payments)
             {
                 <tr>
-                    <td>@payments.Name</td>
-                    <td>@payments.CampSpace</td>
-                    <td>@payments.TotalDebit</td>
-                    <td>@payments.Value.ToString("C", CultureInfo.CurrentCulture)</td>
+                    <td class="col-lg-2">@payments.Name</td>
+                    <td class="col-lg-2">@payments.CampSpace</td>
+                    <td class="col-lg-2">@payments.TotalDebit</td>
+                    <td class="col-lg-2">@payments.Value.ToString("C", ci)</td>
                 </tr>
             }
+            <tr>
+                <td class="col-lg-2">Totales</td>
+                <td class="col-lg-2">@payments.Sum(i => i.CampSpace)</td>
+                <td class="col-lg-2">@payments.Sum(i => i.TotalDebit)</td>
+                <td class="col-lg-2">@payments.Sum(i => i.Value).ToString("C", ci)</td>
+            </tr>
         </tbody>
     </table>
 }
@@ -54,9 +60,11 @@ else
 @code {
     private List<PaymentModel>? payments;
     private int documentNumber = default(int);
+    NumberFormatInfo ci = new CultureInfo("es-CO", false).NumberFormat;    
 
     protected override async Task OnInitializedAsync()
     {
+        ci.CurrencyDecimalDigits = 0;
         payments = await PaymentService.GetAllTotalDebits();
     }
 

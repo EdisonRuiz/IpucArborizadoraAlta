@@ -4,7 +4,7 @@
     {
         public string Name { get; set; } = string.Empty;
         public byte CampSpace { get; set; }
-        public int Value { get; set;}
+        public long Value { get; set;}
         public int TotalDebit { get; set; }
     }
 }

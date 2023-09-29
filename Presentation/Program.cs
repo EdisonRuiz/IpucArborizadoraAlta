@@ -2,16 +2,17 @@ using IPUC.AA.Back.BD;
 using IPUC.AA.Back.BL.Implementations;
 using IPUC.AA.Back.BL.Interfaces;
 using IPUC.AA.Back.DataBase;
-using Presentation.Data;
+//using Azure.Storage.Blobs;
+//using Azure.Storage.Blobs.Models;
 using Presentation.Services.Implementations;
 using Presentation.Services.Interfaces;
+//using Azure.Identity;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
-builder.Services.AddSingleton<WeatherForecastService>();
 
 builder.Services.AddScoped<IPaymentService, PaymentService>();
 builder.Services.AddScoped<IUserService, UserService>();
@@ -21,6 +22,10 @@ builder.Services.AddScoped<PaymentBD>();
 builder.Services.AddScoped<UserDB>();
 
 builder.Services.AddDbContext<DBContext>();
+
+//var blobServiceClient = new BlobServiceClient(
+//        new Uri("https://storageaccountipuc.blob.core.windows.net"),
+//        new DefaultAzureCredential());
 
 var app = builder.Build();
 

@@ -57,8 +57,8 @@
       "PackagePath": "staticwebassets\\favicon.png"
     },
     {
-      "Id": "C:\\Users\\epelr\\source\\repos\\IpucArborizadoraAlta\\Presentation\\wwwroot\\images\\search.png",
-      "PackagePath": "staticwebassets\\images\\search.png"
+      "Id": "C:\\Users\\epelr\\source\\repos\\IpucArborizadoraAlta\\Presentation\\wwwroot\\re.resx",
+      "PackagePath": "staticwebassets\\re.resx"
     },
     {
       "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.Presentation.Microsoft.AspNetCore.StaticWebAssets.props",

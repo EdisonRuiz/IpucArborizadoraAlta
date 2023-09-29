@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "kVzioXqjlLAmgKbdw0E/A5q3pjVMyklU7j0IjIlcJxc=",
+  "Hash": "krq/hnJX8drPIceEponJ6owX78qpLXVmKK2WDGn48Gg=",
   "Source": "Presentation",
   "BasePath": "_content/Presentation",
   "Mode": "Default",
@@ -272,12 +272,12 @@
       "OriginalItemSpec": "wwwroot\\favicon.png"
     },
     {
-      "Identity": "C:\\Users\\epelr\\source\\repos\\IpucArborizadoraAlta\\Presentation\\wwwroot\\images\\search.png",
+      "Identity": "C:\\Users\\epelr\\source\\repos\\IpucArborizadoraAlta\\Presentation\\wwwroot\\re.resx",
       "SourceId": "Presentation",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\epelr\\source\\repos\\IpucArborizadoraAlta\\Presentation\\wwwroot\\",
       "BasePath": "_content/Presentation",
-      "RelativePath": "images/search.png",
+      "RelativePath": "re.resx",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -286,7 +286,7 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\images\\search.png"
+      "OriginalItemSpec": "wwwroot\\re.resx"
     }
   ]
 }
