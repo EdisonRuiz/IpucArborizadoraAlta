@@ -46,8 +46,8 @@
             Abono cargado con exito!
         </div>
     </div>
-    <div>
-        <img src="data:image/png;base64,@image" class="img-fluid" alt="Recibo">
+    <div class="align-items-center">
+        <img src="data:image/png;base64,@image" width="300" height="300" class="img-fluid" alt="Recibo">
     </div>
 }
 
@@ -75,7 +75,7 @@
         {
             image = debit.Image;
             string value = model.Value.ToString("C", CultureInfo.CurrentCulture);
-            urlShare = String.Format(urlShare, debit.Phone, $"Su Abono fue de: ${value}");
+            urlShare = String.Format(urlShare, debit.Phone, $"Dlb, Su Abono fue por un valor de: {value}");
         }
     }
 

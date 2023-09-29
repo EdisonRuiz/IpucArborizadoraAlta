@@ -9,19 +9,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Remove="wwwroot\images\logoIpuc.png" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.19.4" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Ipuc.AA.Back\IPUC.AA.Back.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Include="wwwroot\images\logoIpuc.png" />
   </ItemGroup>
 
 </Project>

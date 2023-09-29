@@ -7,52 +7,45 @@
 
 <PageTitle>Consulta Pagos</PageTitle>
 
-<form OnValidSubmit="@ValidateUser(true)">
+<EditForm Model="@requestModel" OnValidSubmit="@ValidateUser">
     <div class="mb-3">
-        <label for="exampleInputEmail1" class="form-label">Numero de documento</label>
-        <input @bind="@documentNumber" type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+        <label for="inputDocumentNumber" class="form-label">Numero de documento</label>
+        <input @bind-value="@requestModel.documentNumber" type="number" class="form-control" id="inputDocumentNumber">
         <div id="emailHelp" class="form-text">Numero de cedula de quien realiza el abono.</div>
     </div>
     <button type="submit" class="btn btn-primary">Consultar</button>
-</form>
-
-@* @if (isGetUser)
-{
-   
-}
-else
-{
-<div class="row">
-    <label for="colFormLabelLg" class="col-sm-2 col-form-label col-form-label-lg">N Documento</label>
-    <div class="col-sm-10">
-        <input type="text" class="form-control form-control-lg" id="inputnDocumento" placeholder="sin info." disabled="disabled" value="@model.Message">
-    </div>
-    <br />
-    <label for="colFormLabelLg" class="col-sm-2 col-form-label col-form-label-lg">Nombre</label>
-    <div class="col-sm-10">
-        <input type="text" class="form-control form-control-lg" id="inputNombre" placeholder="sin info." disabled="disabled">
-    </div>
-</div>
-} *@
+</EditForm>
 
 @code
 {
-    int documentNumber = 0;
+    public class DocumentNumberModel
+    {
+        public int documentNumber { get; set; }
+    }
+
+    DocumentNumberModel requestModel = new DocumentNumberModel();
     AddUserResponseModel model = new AddUserResponseModel();
 
-    private async Task ValidateUser(bool isOK = false)
+    protected override async Task OnInitializedAsync()
     {
-        //bool isValidate = false;
-        if (documentNumber != default(int))
+        if (requestModel.documentNumber != default(int))
         {
-            model = await UserService.ValidateUser(documentNumber);
+            await ValidateUser();
+        }
+    }
+
+    private async Task ValidateUser()
+    {
+        if (requestModel.documentNumber != default(int))
+        {
+            model = await UserService.ValidateUser(requestModel.documentNumber);
             if (!model.IsCreated)
             {
-                NavManager.NavigateTo($"/registeruser/{documentNumber}");
+                NavManager.NavigateTo($"/registeruser/{requestModel.documentNumber}");
             }
             else
             {
-                NavManager.NavigateTo($"/registerpayment/{documentNumber}");
+                NavManager.NavigateTo($"/registerpayment/{requestModel.documentNumber}");
             }
         }
     }

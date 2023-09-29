@@ -12,3 +12,5 @@ C:\Users\epelr\source\repos\IpucArborizadoraAlta\Ipuc.AA.Back\obj\Debug\net7.0\r
 C:\Users\epelr\source\repos\IpucArborizadoraAlta\Ipuc.AA.Back\obj\Debug\net7.0\IPUC.AA.Back.pdb
 C:\Users\epelr\source\repos\IpucArborizadoraAlta\Ipuc.AA.Back\obj\Debug\net7.0\IPUC.AA.Back.genruntimeconfig.cache
 C:\Users\epelr\source\repos\IpucArborizadoraAlta\Ipuc.AA.Back\obj\Debug\net7.0\ref\IPUC.AA.Back.dll
+C:\Users\epelr\source\repos\IpucArborizadoraAlta\Ipuc.AA.Back\obj\Debug\net7.0\IPUC.AA.Back.Resources.Resource.resources
+C:\Users\epelr\source\repos\IpucArborizadoraAlta\Ipuc.AA.Back\obj\Debug\net7.0\IPUC.AA.Back.csproj.GenerateResource.cache

@@ -145,18 +145,12 @@
         },
         "Patterns": null
       },
-      "images": {
-        "Children": {
-          "search.png": {
-            "Children": null,
-            "Asset": {
-              "ContentRootIndex": 0,
-              "SubPath": "images/search.png"
-            },
-            "Patterns": null
-          }
+      "re.resx": {
+        "Children": null,
+        "Asset": {
+          "ContentRootIndex": 0,
+          "SubPath": "re.resx"
         },
-        "Asset": null,
         "Patterns": null
       },
       "Presentation.styles.css": {
