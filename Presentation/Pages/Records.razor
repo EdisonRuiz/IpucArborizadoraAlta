@@ -6,11 +6,19 @@
 <div class="d-grid gap-2">
     <button class="btn btn-primary" type="button" onclick="@GoUser">Agregar Usuario</button>
     <button class="btn btn-info" type="button" onclick="@GoPayment">Agregar Abono</button>
+    <br />
+    <div class="mb-3">
+        <label for="inputDocumentNumber" class="form-label">Numero de documento</label>
+        <input @bind-value="@documentNumber" type="number" class="form-control">        
+    </div>    
+    <button class="btn btn-success" type="button" onclick="@GoUpdateUser">Actualizar Usuario</button>
 </div>
 
 
 @code
 {
+    private int documentNumber;
+
     private async Task GoUser()
     {
         NavManager.NavigateTo("/registeruser/0");
@@ -19,5 +27,10 @@
     private async Task GoPayment()
     {
         NavManager.NavigateTo("/registerpayment/0");
+    }
+
+    private async Task GoUpdateUser()
+    {
+        NavManager.NavigateTo($"/updateuser/{documentNumber}");
     }
 }

@@ -31,8 +31,10 @@ namespace IPUC.AA.Back.BD
             return entities.FirstOrDefault()?? new Payment();
         }
 
-        public async Task<List<Payment>> GetAllPaymentsAsync()
+        public async Task<List<Payment>> GetAllPaymentsAsync(bool isTake = false)
         {
+            if(isTake)
+                return await _dbContext.Payments.Include(x => x.User).ToListAsync();
             return await _dbContext.Payments.Include(x => x.User).Take(30).ToListAsync();
         }
     }

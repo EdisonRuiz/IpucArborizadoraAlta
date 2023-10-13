@@ -6,5 +6,7 @@ namespace Presentation.Services.Interfaces
     {
         Task<AddUserResponseModel> AddUser(AddUserModel model);
         Task<AddUserResponseModel> ValidateUser(int documentNumber);
+        Task<AddUserModel> GetUser(int documentNumber);
+        Task<AddUserResponseModel> UpdateUser(AddUserModel model);
     }
 }

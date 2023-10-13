@@ -16,6 +16,10 @@ namespace Presentation.Services.Implementations
 
         public async Task<AddUserResponseModel> AddUser(AddUserModel model) => await _userBL.AddUserAsync(model);
 
+        public async Task<AddUserModel> GetUser(int documentNumber) => await _userBL.GetUser(documentNumber);
+
+        public async Task<AddUserResponseModel> UpdateUser(AddUserModel model) => await _userBL.UpdateUser(model);
+
         public async Task<AddUserResponseModel> ValidateUser(int documentNumber) => await _userBL.ValidateUserAsync(documentNumber);
     }
 }
