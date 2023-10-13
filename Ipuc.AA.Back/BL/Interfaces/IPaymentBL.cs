@@ -8,5 +8,6 @@ namespace IPUC.AA.Back.BL.Interfaces
         Task<PaymentModel> GetDebit(Guid idPayment);
         Task<PaymentModel> GetTotalDebit(int documentNumber);
         Task<List<PaymentModel>> GetAllTotalDebits();
+        Task<PaymentTotalModel> GetAllTotals();
     }
 }

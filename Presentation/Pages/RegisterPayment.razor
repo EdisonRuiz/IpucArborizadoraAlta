@@ -70,11 +70,12 @@
     {
         if (model.Value == default(int))
             return;
+        NumberFormatInfo ci = new CultureInfo("es-CO", false).NumberFormat;
         DebitResponseModel debit = await PaymentService.AddDebit(model);
         if (debit.IsOK)
         {
             image = debit.Image;
-            string value = model.Value.ToString("C", CultureInfo.CurrentCulture);
+            string value = model.Value.ToString("C", ci);
             urlShare = String.Format(urlShare, debit.Phone, $"Dlb, Su Abono fue por un valor de: {value}");
         }
     }

@@ -16,6 +16,8 @@ namespace Presentation.Services.Implementations
         public async Task<DebitResponseModel> AddDebit(DebitModel model) => await _paymentBL.AddDebitAsync(model);
         public async Task<List<PaymentModel>> GetAllTotalDebits() => await _paymentBL.GetAllTotalDebits();
 
+        public async Task<PaymentTotalModel> GetAllTotals() => await _paymentBL.GetAllTotals();
+
         public async Task<PaymentModel> GetDebit(Guid idPayment) => await _paymentBL.GetDebit(idPayment);
 
         public async Task<PaymentModel> GetTotalDebits(int documentNumber) => await _paymentBL.GetTotalDebit(documentNumber);

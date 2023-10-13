@@ -13,10 +13,16 @@ public partial class User
     [Unicode(false)]
     public string Name { get; set; } = null!;
 
-    public Int64 Phone { get; set; }
+    public long Phone { get; set; }
 
-    public byte CampSpace { get; set; } 
+    public byte CampSpace { get; set; }
+
+    public byte? TypeTransportId { get; set; }
 
     [InverseProperty("User")]
     public virtual ICollection<Payment> Payments { get; set; } = new List<Payment>();
+
+    [ForeignKey("TypeTransportId")]
+    [InverseProperty("Users")]
+    public virtual TransportType? TypeTransport { get; set; }
 }

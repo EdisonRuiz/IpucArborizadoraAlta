@@ -1,4 +1,4 @@
-﻿@page "/registeruser/{Value}"
+﻿@page "/updateuser/{Value}"
 
 
 @using Presentation.Services.Interfaces
@@ -9,26 +9,26 @@
 <PageTitle>Registro Usuario</PageTitle>
 
 
-<EditForm Model="@model" OnValidSubmit="@AddUser">
+<EditForm Model="@model" OnValidSubmit="@UserUpdate">
     <div class="mb-3">
         <label class="form-label">Numero de documento</label>
-        <input @bind-value="@model.DocumentNumber" type="number" class="form-control">
+        <input @bind-value="@model.DocumentNumber" type="number" class="form-control" readonly>
         <div id="emailHelp" class="form-text">Numero de cedula de quien realiza el abono.</div>
     </div>
     <div class="mb-3">
         <label class="form-label">Nombre Completo</label>
-        <input @bind-value="@model.Name" type="text" class="form-control" >
+        <input @bind-value="@model.Name" type="text" class="form-control" readonly>
         <div id="emailHelp" class="form-text">Nombre de quien realiza el abono.</div>
     </div>
 
     <div class="mb-3">
         <label class="form-label">Numero de Celular</label>
-        <input @bind-value="@model.Phone" type="number" class="form-control">
+        <input @bind-value="@model.Phone" type="number" class="form-control" >
         <div id="emailHelp" class="form-text">Numero de contacto.</div>
     </div>
     <div class="mb-3">
         <label class="form-label">Cantidad de Cupos</label>
-        <input @bind-value="@model.CampSpace" type="number" class="form-control" @oninput="@ValidateZero">
+        <input @bind-value="@model.CampSpace" type="number" class="form-control">
         <div id="emailHelp" class="form-text">Cupos que aparta.</div>
     </div>
     <div class="mb-3">     
@@ -41,7 +41,7 @@
         </InputSelect>
         <div id="emailHelp" class="form-text">En que va a llegar.</div>
     </div>
-    <button type="submit" class="btn btn-primary">Crear</button>
+    <button type="submit" class="btn btn-success">Actualizar</button>
     <button class="btn btn-light" @onclick="Cancel">Cancelar</button>
 </EditForm>
 
@@ -55,14 +55,14 @@
 
     protected override async Task OnInitializedAsync()
     {
-        model.DocumentNumber = int.Parse(Value);
+        model = await UserService.GetUser(int.Parse(Value));
     }
 
 
-    private async Task AddUser()
+    private async Task UserUpdate()
     {
-        AddUserResponseModel addUser = await UserService.AddUser(model);
-        if (addUser.IsCreated)
+        AddUserResponseModel response = await UserService.UpdateUser(model);
+        if (response.IsCreated)
         {
             NavManager.NavigateTo($"/registerpayment/{model.DocumentNumber}");
         }
@@ -71,10 +71,5 @@
     public void Cancel()
     {
         NavManager.NavigateTo("/queries");
-    }
-
-    public async Task ValidateZero(ChangeEventArgs e)
-    {
-           
     }
 }

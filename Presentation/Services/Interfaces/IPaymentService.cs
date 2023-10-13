@@ -8,5 +8,6 @@ namespace Presentation.Services.Interfaces
         public Task<PaymentModel> GetDebit(Guid idPayment);
         public Task<PaymentModel> GetTotalDebits(int documentNumber);
         public Task<List<PaymentModel>> GetAllTotalDebits();
+        public Task<PaymentTotalModel> GetAllTotals();
     }
 }
