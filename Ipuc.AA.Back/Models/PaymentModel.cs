@@ -7,5 +7,7 @@
         public byte CampSpace { get; set; }
         public long Value { get; set;}
         public int TotalDebit { get; set; }
+        public long TotalCredit { get; set; }
+        public string TypeTransport { get; set; } = string.Empty;
     }
 }

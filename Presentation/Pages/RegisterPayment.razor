@@ -76,7 +76,8 @@
         {
             image = debit.Image;
             string value = model.Value.ToString("C", ci);
-            urlShare = String.Format(urlShare, debit.Phone, $"Dlb, Su Abono fue por un valor de: {value}");
+            string phone = $"+57 {debit.Phone}";
+            urlShare = String.Format(urlShare, phone, $"Dlb, Su Abono fue por un valor de: {value}");
         }
     }
 
