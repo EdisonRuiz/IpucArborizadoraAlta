@@ -28,14 +28,16 @@
 else
 {
     <br />
-    <table class="table">
+    <table class="table" Responsive="true">
         <thead>
             <tr>
-                <th></th>
+                <th class="col-lg-1"></th>
                 <th class="col-lg-2">Nombre</th>
                 <th class="col-lg-2">Cedula</th>
-                <th class="col-lg-2"># de cupos</th>
-                <th class="col-lg-2"># de abonos</th>
+                <th class="col-lg-2">Cupos</th>
+                <th class="col-lg-1">--></th>
+                <th class="col-lg-2">Abonos</th>
+                <th class="col-lg-2">Adeuda</th>
                 <th class="col-lg-2">Total Abonado</th>
             </tr>
         </thead>
@@ -47,16 +49,20 @@ else
                     <td class="col-lg-2">@payments[item].Name</td>
                     <td class="col-lg-2">@payments[item].DocumentNumber</td>
                     <td class="col-lg-2">@payments[item].CampSpace</td>
+                    <td class="col-lg-2">@payments[item].TypeTransport</td>
                     <td class="col-lg-2">@payments[item].TotalDebit</td>
+                    <td class="col-lg-2">@payments[item].TotalCredit.ToString("C", ci)</td>
                     <td class="col-lg-2">@payments[item].Value.ToString("C", ci)</td>
                 </tr>
             }
             <tr>
                 <td class="col-lg-2"></td>
                 <td class="col-lg-2"></td>
-                <td class="col-lg-2">Totales</td>
-                <td class="col-lg-2">@payments.Sum(i => i.CampSpace)</td>
+                <td class="col-lg-2"></td>
+                <td class="col-lg-2"></td>
+                <td class="col-lg-2">Totales</td>                
                 <td class="col-lg-2">@payments.Sum(i => i.TotalDebit)</td>
+                <td class="col-lg-2">@payments.Sum(i => i.TotalCredit)</td>
                 <td class="col-lg-2">@payments.Sum(i => i.Value).ToString("C", ci)</td>
             </tr>
         </tbody>

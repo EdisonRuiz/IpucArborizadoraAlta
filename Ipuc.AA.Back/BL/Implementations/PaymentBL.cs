@@ -110,6 +110,8 @@ namespace IPUC.AA.Back.BL.Implementations
                 Name = entity.User.Name,
                 DocumentNumber = entity.User.Id,
                 TotalDebit = 1,
+                TypeTransport = ((TypeTransports)entity.User.TypeTransportId).ToString(),
+                TotalCredit = 0,
                 Value = entity.Value
             };
         }
@@ -120,15 +122,21 @@ namespace IPUC.AA.Back.BL.Implementations
             if (!entities.Any())
                 return new PaymentModel();
 
-            
+            byte campSpace = entities.FirstOrDefault().User.CampSpace;
+            TypeTransports typeTransport = (TypeTransports)entities.FirstOrDefault().User.TypeTransportId;
+            long value = entities.Sum(x => x.Value);
+            long totalCredit = typeTransport == TypeTransports.Bus ? ((200000 * campSpace) - value)
+                : ((170000 * campSpace) - value);
 
             return new PaymentModel()
             {
-                CampSpace = entities.FirstOrDefault().User.CampSpace,
+                CampSpace = campSpace,
                 Name = entities.FirstOrDefault().User.Name,
                 DocumentNumber = entities.FirstOrDefault().User.Id,
                 TotalDebit = entities.Count,
-                Value = entities.Sum(x => x.Value)
+                TotalCredit = totalCredit,
+                TypeTransport = typeTransport.ToString(),
+                Value = value
             };
         }
 
@@ -137,7 +145,6 @@ namespace IPUC.AA.Back.BL.Implementations
             var entities = await _paymentBD.GetAllPaymentsAsync(true);
             List<PaymentModel> response = MapperPayment(entities);
             return response.Take(10).OrderBy(x => x.Value).ToList();
-
         }
 
         private static List<PaymentModel> MapperPayment(List<Payment> entities)
@@ -149,6 +156,9 @@ namespace IPUC.AA.Back.BL.Implementations
                 Name = item.First().User.Name,
                 DocumentNumber = item.First().User.Id,
                 TotalDebit = item.Count(),
+                TotalCredit = (TypeTransports)entities.FirstOrDefault().User.TypeTransportId == TypeTransports.Bus ? ((200000 * item.First().User.CampSpace) - item.Sum(x => x.Value))
+                : ((170000 * item.First().User.CampSpace) - item.Sum(x => x.Value)),
+                TypeTransport = ((TypeTransports)entities.FirstOrDefault().User.TypeTransportId).ToString(),
                 Value = item.Sum(x => x.Value)
             }).ToList();
             return response;

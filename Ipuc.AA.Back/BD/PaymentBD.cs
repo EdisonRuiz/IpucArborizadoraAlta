@@ -33,7 +33,7 @@ namespace IPUC.AA.Back.BD
 
         public async Task<List<Payment>> GetAllPaymentsAsync(bool isTake = false)
         {
-            if(isTake)
+            if(!isTake)
                 return await _dbContext.Payments.Include(x => x.User).ToListAsync();
             return await _dbContext.Payments.Include(x => x.User).Take(30).ToListAsync();
         }
