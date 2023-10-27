@@ -156,9 +156,9 @@ namespace IPUC.AA.Back.BL.Implementations
                 Name = item.First().User.Name,
                 DocumentNumber = item.First().User.Id,
                 TotalDebit = item.Count(),
-                TotalCredit = (TypeTransports)entities.FirstOrDefault().User.TypeTransportId == TypeTransports.Bus ? ((200000 * item.First().User.CampSpace) - item.Sum(x => x.Value))
+                TotalCredit = (TypeTransports)item.First().User.TypeTransportId == TypeTransports.Bus ? ((200000 * item.First().User.CampSpace) - item.Sum(x => x.Value))
                 : ((170000 * item.First().User.CampSpace) - item.Sum(x => x.Value)),
-                TypeTransport = ((TypeTransports)entities.FirstOrDefault().User.TypeTransportId).ToString(),
+                TypeTransport = ((TypeTransports)item.First().User.TypeTransportId).ToString(),
                 Value = item.Sum(x => x.Value)
             }).ToList();
             return response;
