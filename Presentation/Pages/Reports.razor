@@ -6,6 +6,41 @@
 @inject IPaymentService PaymentService
 
 <PageTitle>Reportes</PageTitle>
+<div>
+    <div class="row g-3 align-items-center">
+        <div class="col-auto">
+            <button onclick="@GetTotals" class="btn btn-outline-success" type="submit">Mostrar</button>
+        </div>
+    </div>
+    @if (paymentTotalModel != null)
+    {
+        <br />
+        <h5>Registros Generales</h5>
+        <br />
+        <table class="table">
+            <thead>
+                <tr>
+                    <th class="col-lg-2">Cupos totales</th>
+                    <th class="col-lg-2">Particular</th>
+                    <th class="col-lg-2">Bus</th>
+                    <th class="col-lg-2">Abonos</th>
+                    <th class="col-lg-2">Deuda</th>
+                    <th class="col-lg-2">Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="col-lg-2">@paymentTotalModel.CampSpace</td>
+                    <td class="col-lg-2">@paymentTotalModel.Car</td>
+                    <td class="col-lg-2">@paymentTotalModel.Bus</td>
+                    <td class="col-lg-2">@paymentTotalModel.Debits</td>
+                    <td class="col-lg-2">@paymentTotalModel.Credits</td>
+                    <td class="col-lg-2">@paymentTotalModel.PaymentsTotal</td>
+                </tr>
+            </tbody>
+        </table>
+    }
+</div>
 
 <h1>Abonos realizados</h1>
 
@@ -31,12 +66,11 @@ else
     <table class="table" Responsive="true">
         <thead>
             <tr>
-                <th class="col-lg-1"></th>
                 <th class="col-lg-2">Nombre</th>
                 <th class="col-lg-2">Cedula</th>
                 <th class="col-lg-2">Cupos</th>
-                <th class="col-lg-1">--></th>
-                <th class="col-lg-2">Abonos</th>
+                <th class="col-lg-1">Transp</th>
+                <th class="col-lg-2">Abon</th>
                 <th class="col-lg-2">Adeuda</th>
                 <th class="col-lg-2">Total Abonado</th>
             </tr>
@@ -45,7 +79,6 @@ else
             @for (int item = default(int); item < payments.Count(); item++)
             {
                 <tr>
-                    <td>@(item + 1)</td>
                     <td class="col-lg-2">@payments[item].Name</td>
                     <td class="col-lg-2">@payments[item].DocumentNumber</td>
                     <td class="col-lg-2">@payments[item].CampSpace</td>
@@ -59,50 +92,14 @@ else
                 <td class="col-lg-2"></td>
                 <td class="col-lg-2"></td>
                 <td class="col-lg-2"></td>
-                <td class="col-lg-2"></td>
                 <td class="col-lg-2">Totales</td>                
                 <td class="col-lg-2">@payments.Sum(i => i.TotalDebit)</td>
-                <td class="col-lg-2">@payments.Sum(i => i.TotalCredit)</td>
+                <td class="col-lg-2">@payments.Sum(i => i.TotalCredit).ToString("C", ci)</td>
                 <td class="col-lg-2">@payments.Sum(i => i.Value).ToString("C", ci)</td>
             </tr>
         </tbody>
     </table>
 }
-<div>
-    <div class="row g-3 align-items-center">        
-        <div class="col-auto">
-            <button onclick="@GetTotals" class="btn btn-outline-success" type="submit">Mostrar</button>
-        </div>
-    </div>
-    @if (paymentTotalModel != null)
-    {
-        <br />
-        <h5>Registros Generales</h5>
-        <br />
-        <table class="table">
-            <thead>
-                <tr>
-                    <th class="col-lg-2">Cupos totales</th>
-                    <th class="col-lg-2">Particular</th>
-                    <th class="col-lg-2">Bus</th>
-                    <th class="col-lg-2">Abonos</th>
-                    <th class="col-lg-2">Deuda</th>                    
-                    <th class="col-lg-2">Total</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td class="col-lg-2">@paymentTotalModel.CampSpace</td>
-                    <td class="col-lg-2">@paymentTotalModel.Car</td>
-                    <td class="col-lg-2">@paymentTotalModel.Bus</td>
-                    <td class="col-lg-2">@paymentTotalModel.Debits</td>
-                    <td class="col-lg-2">@paymentTotalModel.Credits</td>
-                    <td class="col-lg-2">@paymentTotalModel.PaymentsTotal</td>
-                </tr>
-            </tbody>
-        </table>
-    }
-</div>
 
 @code {
     private List<PaymentModel>? payments;

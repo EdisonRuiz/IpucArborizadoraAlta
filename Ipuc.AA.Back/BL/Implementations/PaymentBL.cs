@@ -57,6 +57,7 @@ namespace IPUC.AA.Back.BL.Implementations
             //Bitmap qrCodeAsBitmap = QrCode.GetGraphic(60);
             Bitmap qrCodeAsBitmap = QrCode.GetGraphic(60, Color.Black, Color.White, logoImage);
             byte[] BitmapArray = BitmapToByteArray(qrCodeAsBitmap);
+            logoImage.Dispose();
             return Convert.ToBase64String(BitmapArray);
         }
 
@@ -111,7 +112,7 @@ namespace IPUC.AA.Back.BL.Implementations
                 DocumentNumber = entity.User.Id,
                 TotalDebit = 1,
                 TypeTransport = ((TypeTransports)entity.User.TypeTransportId).ToString(),
-                TotalCredit = 0,
+                TotalCredit = default(long),
                 Value = entity.Value
             };
         }
@@ -125,8 +126,9 @@ namespace IPUC.AA.Back.BL.Implementations
             byte campSpace = entities.FirstOrDefault().User.CampSpace;
             TypeTransports typeTransport = (TypeTransports)entities.FirstOrDefault().User.TypeTransportId;
             long value = entities.Sum(x => x.Value);
-            long totalCredit = typeTransport == TypeTransports.Bus ? ((200000 * campSpace) - value)
-                : ((170000 * campSpace) - value);
+            long valueTransport = (long)ValueTransports.vCarro;
+            long totalCredit = typeTransport == TypeTransports.Bus ? (((long)ValueTransports.vBus * campSpace) - value)
+                : (((long)ValueTransports.vCarro * campSpace) - value);
 
             return new PaymentModel()
             {
@@ -144,7 +146,7 @@ namespace IPUC.AA.Back.BL.Implementations
         {
             var entities = await _paymentBD.GetAllPaymentsAsync(true);
             List<PaymentModel> response = MapperPayment(entities);
-            return response.Take(10).OrderBy(x => x.Value).ToList();
+            return response.OrderBy(x => x.TotalCredit).ToList();
         }
 
         private static List<PaymentModel> MapperPayment(List<Payment> entities)
@@ -156,8 +158,9 @@ namespace IPUC.AA.Back.BL.Implementations
                 Name = item.First().User.Name,
                 DocumentNumber = item.First().User.Id,
                 TotalDebit = item.Count(),
-                TotalCredit = (TypeTransports)item.First().User.TypeTransportId == TypeTransports.Bus ? ((200000 * item.First().User.CampSpace) - item.Sum(x => x.Value))
-                : ((170000 * item.First().User.CampSpace) - item.Sum(x => x.Value)),
+                TotalCredit = (item.First().User.CampSpace * 
+                    (((TypeTransports)item.First().User.TypeTransportId) == TypeTransports.Carro? (long)ValueTransports.vCarro : (long)ValueTransports.vBus)) 
+                    - item.Sum(x => x.Value),
                 TypeTransport = ((TypeTransports)item.First().User.TypeTransportId).ToString(),
                 Value = item.Sum(x => x.Value)
             }).ToList();
@@ -182,8 +185,8 @@ namespace IPUC.AA.Back.BL.Implementations
             int totalCar = users.Where(x => x.TypeTransportId == (byte)TypeTransports.Carro).Sum(y => y.CampSpace);
             int totalBus = users.Where(x => x.TypeTransportId == (byte)TypeTransports.Bus).Sum(y => y.CampSpace);
             int campSpaceValue = users.Sum(x => x.CampSpace);
-            Int64 valueTotal = (totalCar * 170000)
-                + (totalBus * 200000);
+            Int64 valueTotal = (totalCar * (long)ValueTransports.vCarro)
+                + (totalBus * (long)ValueTransports.vBus);
 
             return new PaymentTotalModel
             {

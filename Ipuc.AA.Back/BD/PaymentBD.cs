@@ -35,7 +35,7 @@ namespace IPUC.AA.Back.BD
         {
             if(!isTake)
                 return await _dbContext.Payments.Include(x => x.User).ToListAsync();
-            return await _dbContext.Payments.Include(x => x.User).Take(30).ToListAsync();
+            return await _dbContext.Payments.Include(x => x.User).Take(500).ToListAsync();
         }
     }
 }

@@ -7,4 +7,10 @@ namespace IPUC.AA.Back.Models
         Carro = 1,
         Bus = 2
     }
+
+    public enum ValueTransports
+    {
+        vCarro = 220000,
+        vBus = 240000
+    }
 }
